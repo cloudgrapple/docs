@@ -1,0 +1,113 @@
+---
+title: "Get project data"
+sidebarTitle: "GET /projects/{project}/data"
+description: "Fetch paginated rows from a project"
+---
+
+Returns materialized project rows with field names resolved for each cell.
+
+## Request
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token for a workspace API key scoped to this workspace.
+</ParamField>
+
+<ParamField path="workspace" type="string" required>
+  Workspace slug.
+</ParamField>
+
+<ParamField path="project" type="integer" required>
+  Project ID.
+</ParamField>
+
+<ParamField query="page" type="integer" default="1">
+  Page number. Must be at least `1`.
+</ParamField>
+
+<ParamField query="per_page" type="integer" default="100">
+  Rows per page. Minimum `1`, maximum `5000`.
+</ParamField>
+
+```bash
+curl "https://app.askgrapple.com/api/v1/workspaces/acme-corp/projects/42/data?page=1&per_page=100" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+## Response
+
+<ResponseField name="data" type="array">
+  Paginated rows. Each row is an array of cell objects.
+
+  <Expandable title="cell object">
+    <ResponseField name="key" type="string">
+      Internal field path for the cell.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Human-readable field name.
+    </ResponseField>
+
+    <ResponseField name="value" type="mixed">
+      Cell value.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="meta" type="object">
+  Pagination metadata.
+
+  <Expandable title="properties">
+    <ResponseField name="record_count" type="integer">
+      Total materialized rows in the project.
+    </ResponseField>
+
+    <ResponseField name="page" type="integer">
+      Current page number.
+    </ResponseField>
+
+    <ResponseField name="per_page" type="integer">
+      Rows returned per page.
+    </ResponseField>
+
+    <ResponseField name="has_more" type="boolean">
+      Whether additional pages are available.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+```json
+{
+  "data": [
+    [
+      {
+        "key": "deal_name",
+        "name": "Deal Name",
+        "value": "Acme Renewal"
+      },
+      {
+        "key": "amount",
+        "name": "Amount",
+        "value": 48000
+      }
+    ]
+  ],
+  "meta": {
+    "record_count": 1280,
+    "page": 1,
+    "per_page": 100,
+    "has_more": true
+  }
+}
+```
+
+<Tip>
+  Paginate through all rows by incrementing `page` until `meta.has_more` is `false`.
+</Tip>
+
+## Errors
+
+| Status | Reason |
+| ------ | ------ |
+| `401` | Missing or invalid API key |
+| `403` | API key does not belong to this workspace |
+| `404` | Project not found in this workspace |

@@ -1,0 +1,55 @@
+---
+title: "Get workspace"
+sidebarTitle: "GET /me"
+description: "Return the workspace associated with your API key"
+---
+
+Returns the workspace your API key is scoped to. Use this to confirm the workspace slug before calling project endpoints.
+
+## Request
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token for a workspace API key.
+</ParamField>
+
+```bash
+curl https://app.askgrapple.com/api/v1/me \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+## Response
+
+<ResponseField name="workspace" type="object">
+  The workspace tied to the API key.
+
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      Workspace ID.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Workspace display name.
+    </ResponseField>
+
+    <ResponseField name="slug" type="string">
+      Workspace slug. Use this value in `/workspaces/{workspace}/...` paths.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+```json
+{
+  "workspace": {
+    "id": 1,
+    "name": "Acme Corp",
+    "slug": "acme-corp"
+  }
+}
+```
+
+## Errors
+
+| Status | Reason |
+| ------ | ------ |
+| `401` | Missing or invalid API key |
+| `403` | Token is not scoped to a workspace |

@@ -1,0 +1,60 @@
+---
+title: "Overview"
+description: "Programmatically access workspace and project data with the Grapple REST API"
+---
+
+The Grapple REST API lets you read workspace and project data from your own integrations, scripts, and automations.
+
+All v1 endpoints live under:
+
+```
+https://app.askgrapple.com/api/v1
+```
+
+## Authentication
+
+Every v1 request requires a [workspace API key](/api/authentication) sent as a Bearer token:
+
+```bash
+Authorization: Bearer YOUR_API_KEY
+```
+
+API keys are scoped to a single workspace. Use [`GET /me`](/api/me) to confirm which workspace your key belongs to.
+
+## Endpoints
+
+| Method | Path | Description |
+| ------ | ---- | ----------- |
+| `GET` | `/me` | Return the workspace tied to your API key |
+| `GET` | `/workspaces/{workspace}/projects` | List projects in a workspace |
+| `GET` | `/workspaces/{workspace}/projects/{project}` | Get a project and its fields |
+| `GET` | `/workspaces/{workspace}/projects/{project}/data` | Fetch paginated project rows |
+
+Replace `{workspace}` with your workspace slug and `{project}` with a project ID.
+
+## Errors
+
+The API returns JSON error bodies:
+
+| Status | Meaning |
+| ------ | ------- |
+| `401` | Missing or invalid API key |
+| `403` | API key does not belong to the requested workspace |
+| `404` | Resource not found in the requested workspace |
+
+```json
+{
+  "message": "Unauthenticated."
+}
+```
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/api/authentication">
+    Create and manage workspace API keys.
+  </Card>
+  <Card title="List projects" icon="folder" href="/api/projects/list">
+    Fetch all projects in a workspace.
+  </Card>
+</CardGroup>

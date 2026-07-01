@@ -13,6 +13,109 @@
       {
         "group": "Getting Started",
         "pages": ["index", "quickstart"]
+      },
+      {
+        "group": "Data Library",
+        "pages": [
+          "data-library/index",
+          {
+            "group": "Integrations",
+            "pages": [
+              "data-library/integrations/airtable",
+              "data-library/integrations/amplitude",
+              "data-library/integrations/asana",
+              "data-library/integrations/attio",
+              "data-library/integrations/connectwise",
+              "data-library/integrations/csv",
+              "data-library/integrations/github",
+              "data-library/integrations/google-sheets",
+              "data-library/integrations/heyreach",
+              "data-library/integrations/hubspot",
+              "data-library/integrations/instantly",
+              "data-library/integrations/jira",
+              "data-library/integrations/json",
+              "data-library/integrations/kit",
+              "data-library/integrations/mailchimp",
+              "data-library/integrations/maxio",
+              "data-library/integrations/mixpanel",
+              "data-library/integrations/mongodb",
+              "data-library/integrations/mysql",
+              "data-library/integrations/notion",
+              "data-library/integrations/npm",
+              "data-library/integrations/ordway",
+              "data-library/integrations/pandadoc",
+              "data-library/integrations/pipedrive",
+              "data-library/integrations/psql",
+              "data-library/integrations/posthog",
+              "data-library/integrations/quickbooks",
+              "data-library/integrations/royal4",
+              "data-library/integrations/s3",
+              "data-library/integrations/salesforce",
+              "data-library/integrations/shopify",
+              "data-library/integrations/smartsheets",
+              "data-library/integrations/stripe",
+              "data-library/integrations/supabase",
+              "data-library/integrations/typeform",
+              "data-library/integrations/xml",
+              "data-library/integrations/zendesk",
+              "data-library/integrations/zoho-billing",
+              "data-library/integrations/zoho-books",
+              "data-library/integrations/zoho-crm",
+              "data-library/integrations/zoho-inventory"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Projects",
+        "pages": [
+          "projects/index",
+          "projects/skills",
+          "projects/add",
+          "projects/view",
+          {
+            "group": "Calculations",
+            "pages": [
+              "projects/calculations/formula",
+              "projects/calculations/rollup",
+              "projects/calculations/transform"
+            ]
+          },
+          {
+            "group": "Charts",
+            "pages": [
+              "projects/charts/bar",
+              "projects/charts/line",
+              "projects/charts/number",
+              "projects/charts/pie",
+              "projects/charts/waterfall",
+              "projects/charts/area",
+              "projects/charts/table"
+            ]
+          },
+          "projects/data/filter",
+          "projects/data/map",
+          "projects/public",
+          "projects/clone",
+          "projects/share",
+          "projects/export"
+        ]
+      },
+      {
+        "group": "API",
+        "pages": [
+          "api/index",
+          "api/authentication",
+          "api/me",
+          {
+            "group": "Projects",
+            "pages": [
+              "api/projects/list",
+              "api/projects/get",
+              "api/projects/data"
+            ]
+          }
+        ]
       }
     ],
     "global": {

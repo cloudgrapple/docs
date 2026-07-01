@@ -1,0 +1,43 @@
+---
+title: "Data Library"
+description: "Connect and manage data sources for your workspace"
+---
+
+The Data Library is where you connect external apps and files to your workspace. Each connection syncs one or more **collections** — datasets like Deals, Contacts, or Invoices — that you can use in projects.
+
+## Add a source
+
+1. Open **Data Library** from the sidebar.
+2. Click **Add source** and choose an integration.
+3. Complete the setup (OAuth, credentials, or file upload).
+4. Grapple provisions the sync and discovers available collections.
+
+You'll receive an email when the first sync succeeds.
+
+## Manage sources
+
+The Data Library shows each source with record counts, last updated time, and sync status.
+
+From a source detail page you can:
+
+- **Refresh** — trigger a manual sync
+- **Toggle collections** — choose which datasets to sync
+- **View schemas** — see available fields for each collection
+
+<Info>
+  Only workspace **owners** and **editors** can add and manage sources. Viewers and guests cannot access the Data Library.
+</Info>
+
+## How syncing works
+
+1. Data syncs from your source into Grapple's warehouse.
+2. Schemas are generated from your data.
+3. Projects using that data re-materialize automatically.
+
+You can't start a new sync while one is already running.
+
+## Use data in projects
+
+Once a source has synced, its collections are available when you create or edit projects. Use the `/map` skill in a project to join additional collections.
+
+Browse [Integrations](/data-library/integrations/airtable) for setup guides for each supported source.

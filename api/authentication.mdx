@@ -1,0 +1,38 @@
+---
+title: "Authentication"
+description: "Create workspace-scoped API keys for the Grapple REST API"
+---
+
+API keys authenticate requests to the Grapple v1 API. Each key is scoped to one workspace and can only access that workspace's data.
+
+## Create an API key
+
+1. Open the [Grapple dashboard](https://app.askgrapple.com).
+2. Go to **Workspaces** and open your workspace settings.
+3. In the **API Keys** section, enter a name for the key (for example, `Zapier` or `Internal ETL`).
+4. Click **Create** and copy the key immediately. Grapple shows the full token only once.
+
+<Warning>
+  Store API keys securely. Anyone with a key can read data from the workspace it belongs to.
+</Warning>
+
+## Use an API key
+
+Send the key in the `Authorization` header on every v1 request:
+
+```bash
+curl https://app.askgrapple.com/api/v1/me \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+Keys use Laravel Sanctum bearer tokens. The token must include a `workspace:{id}` ability that matches the workspace you request in the URL.
+
+## Workspace scoping
+
+When you call endpoints under `/workspaces/{workspace}/...`, the `{workspace}` slug must match the workspace your API key belongs to. Requests to a different workspace return `403 Forbidden`.
+
+Use [`GET /me`](/api/me) to look up the workspace slug tied to your key before making project requests.
+
+## Revoke a key
+
+From the same **API Keys** section in workspace settings, revoke keys you no longer need. Revoked keys stop working immediately.

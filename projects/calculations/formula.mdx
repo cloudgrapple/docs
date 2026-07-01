@@ -1,0 +1,20 @@
+---
+title: "Formula"
+description: "Calculate a new field with a spreadsheet formula"
+---
+
+Use `/formula` to add a calculated column using a row-level expression.
+
+## How to use
+
+1. Type `/formula` and press **Space**.
+2. Describe the calculation — for example, *"full name from first and last name"* or *"days since created"*.
+3. Grapple generates the formula and adds one new column.
+
+Formulas operate on fields in the same row. Each change triggers materialization.
+
+## Examples
+
+- Concatenate two text fields
+- Date math between columns
+- Simple arithmetic on numeric fields

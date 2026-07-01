@@ -1,0 +1,41 @@
+---
+title: "Projects"
+description: "Analyze, visualize, and share data in a Grapple project"
+---
+
+A project is a report built on a **base collection** from your Data Library. You add fields, filters, views, and charts — then share or export the results.
+
+## Project structure
+
+| Piece | What it is |
+| ----- | ---------- |
+| **Base collection** | The primary dataset your project starts from |
+| **Joins** | Links to additional collections (via `/map`) |
+| **Fields** | Columns in the data grid — native or calculated |
+| **Filters** | Row-level filters applied before aggregation |
+| **Views** | Aggregated tables (groupsets) for metrics and reports |
+| **Charts** | Visualizations bound to a view or groupset |
+
+## The project editor
+
+Open a project to see the data grid, command bar, and view tabs.
+
+Type `/` or press **⌘K** to run a [skill](/projects/skills). Most changes trigger **materialization** — a background job that writes your project data for fast querying. Wait for the status to show **up to date** before charts populate.
+
+## Materialization status
+
+| Status | Meaning |
+| ------ | ------- |
+| `up_to_date` | Data is current |
+| `updating` | A refresh is in progress |
+| `error` | The last materialization failed |
+
+## Permissions
+
+| Role | Access |
+| ---- | ------ |
+| Owner / Editor | Create and edit any project |
+| Viewer | View all projects; edit only projects they own |
+| Guest | View only projects shared with them |
+
+See [Skills](/projects/skills) for the full list of slash commands.
