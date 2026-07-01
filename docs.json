@@ -1,34 +1,26 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Grapple",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#9FCF01",
+    "light": "#DDF7B6",
+    "dark": "#506C02"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "pages": [
       {
         "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
+        "pages": ["index", "quickstart"]
       }
     ],
     "global": {
       "anchors": [
         {
           "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "href": "https://askgrapple.com/docs",
           "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
         }
       ]
     }
@@ -40,33 +32,24 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Contact Sales",
+        "href": "https://meetings.hubspot.com/jack-sellwood/meet-grapple"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "href": "https://app.askgrapple.com"
     }
   },
   "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
-    ]
+    "options": ["copy", "view", "chatgpt", "claude", "mcp", "cursor", "vscode"]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/askgrapple",
+      "github": "https://github.com/cloudgrapple",
+      "linkedin": "https://linkedin.com/company/askgrapple"
     }
   }
 }
