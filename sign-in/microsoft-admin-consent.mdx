@@ -1,0 +1,68 @@
+---
+title: "Grant Microsoft Entra admin consent"
+sidebarTitle: "Microsoft Entra consent"
+description: "Approve Grapple for your organization so your team can sign in with Microsoft"
+keywords:
+  - "microsoft"
+  - "entra"
+  - "azure ad"
+  - "admin consent"
+  - "sso"
+  - "need admin approval"
+---
+
+If your organization restricts which apps employees can approve, people who try to sign in to Grapple with Microsoft see a **Need admin approval** screen. A Microsoft Entra administrator can approve Grapple once for the whole organization, after which everyone in the tenant can sign in.
+
+## Before you start
+
+You need a work or school account in your organization's Microsoft Entra tenant with one of these roles:
+
+- Global Administrator
+- Privileged Role Administrator
+- Cloud Application Administrator
+- Application Administrator
+
+Personal Microsoft accounts (such as Outlook.com) don't use this flow.
+
+<Info>
+  If your account belongs to more than one tenant, sign in with the account for the organization you want to approve. Consent applies only to the tenant you sign in to.
+</Info>
+
+## Grant consent
+
+<Steps>
+  <Step title="Open the admin consent link">
+    Open the [Grapple admin consent link](https://login.microsoftonline.com/common/adminconsent?client_id=3c39464a-426f-42bf-afb2-3b1843adf0fa):
+
+    ```text
+    https://login.microsoftonline.com/common/adminconsent?client_id=3c39464a-426f-42bf-afb2-3b1843adf0fa
+    ```
+  </Step>
+  <Step title="Sign in as an administrator">
+    Sign in with your administrator account for the organization.
+  </Step>
+  <Step title="Review and accept">
+    Microsoft lists the permissions Grapple requests. Review them, then select **Accept**.
+  </Step>
+</Steps>
+
+<Note>
+  After you select **Accept**, Microsoft sends you back to Grapple's sign-in page, which may show a sign-in error. That page expects a user sign-in, so the error is expected. Use the steps below to confirm consent was granted.
+</Note>
+
+## Confirm it worked
+
+<Steps>
+  <Step title="Find Grapple in Enterprise applications">
+    In the [Microsoft Entra admin center](https://entra.microsoft.com), go to **Enterprise applications** and search for **Grapple**. If Grapple appears in the list, consent was granted for your organization.
+  </Step>
+  <Step title="Sign in to Grapple">
+    Go to the [Grapple dashboard](https://app.askgrapple.com) and select **Login with Microsoft**. You and your teammates can now sign in without the approval screen.
+  </Step>
+</Steps>
+
+## What consent allows
+
+Admin consent lets people in your organization sign in to Grapple with their Microsoft accounts. Each person still signs in individually, and Grapple accesses no Microsoft data beyond what sign-in requires.
+
+Connecting data sources is a separate step. See the [Data Library](/data-library) to add sources.

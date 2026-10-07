@@ -12,7 +12,11 @@
     "pages": [
       {
         "group": "Getting Started",
-        "pages": ["index", "quickstart"]
+        "pages": [
+          "index",
+          "quickstart",
+          "sign-in/microsoft-admin-consent"
+        ]
       },
       {
         "group": "Data Library",
