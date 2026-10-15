@@ -7,7 +7,7 @@ The Grapple REST API lets you read workspace and project data from your own inte
 
 All v1 endpoints live under:
 
-```
+```text
 https://app.askgrapple.com/api/v1
 ```
 
@@ -29,6 +29,9 @@ API keys are scoped to a single workspace. Use [`GET /me`](/api/me) to confirm w
 | `GET` | `/workspaces/{workspace}/projects` | List projects in a workspace |
 | `GET` | `/workspaces/{workspace}/projects/{project}` | Get a project and its fields |
 | `GET` | `/workspaces/{workspace}/projects/{project}/data` | Fetch paginated project rows |
+| `GET` | `/workspaces/{workspace}/projects/{project}/views` | List views on a project |
+| `GET` | `/workspaces/{workspace}/projects/{project}/views/{view}` | Get a view |
+| `GET` | `/workspaces/{workspace}/projects/{project}/views/{view}/data` | Fetch paginated view rows |
 
 Replace `{workspace}` with your workspace slug and `{project}` with a project ID.
 
@@ -56,5 +59,8 @@ The API returns JSON error bodies:
   </Card>
   <Card title="List projects" icon="folder" href="/api/projects/list">
     Fetch all projects in a workspace.
+  </Card>
+  <Card title="List views" icon="table" href="/api/projects/views/list">
+    Fetch the views on a project.
   </Card>
 </CardGroup>

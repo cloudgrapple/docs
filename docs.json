@@ -118,6 +118,14 @@
               "api/projects/get",
               "api/projects/data"
             ]
+          },
+          {
+            "group": "Views",
+            "pages": [
+              "api/projects/views/list",
+              "api/projects/views/get",
+              "api/projects/views/data"
+            ]
           }
         ]
       }

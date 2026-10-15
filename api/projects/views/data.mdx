@@ -1,0 +1,122 @@
+---
+title: "Get view data"
+sidebarTitle: "GET /projects/{project}/views/{view}/data"
+description: "Fetch paginated rows from a view"
+---
+
+Returns grouped rows for a view, with field names resolved for each cell.
+
+`meta.record_count` is the number of grouped rows in the view. It is not the project's materialized row count. A project that has not been materialized returns an empty page with `record_count` of `0`.
+
+The view must belong to the project. A chart grouping, or a view from another project, is not found.
+
+## Request
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token for a workspace API key scoped to this workspace.
+</ParamField>
+
+<ParamField path="workspace" type="string" required>
+  Workspace slug.
+</ParamField>
+
+<ParamField path="project" type="integer" required>
+  Project ID.
+</ParamField>
+
+<ParamField path="view" type="integer" required>
+  View ID from [List views](/api/projects/views/list).
+</ParamField>
+
+<ParamField query="page" default="1" type="integer">
+  Page number. Must be at least `1`.
+</ParamField>
+
+<ParamField query="per_page" default="100" type="integer">
+  Rows per page. Minimum `1`, maximum `5000`.
+</ParamField>
+
+```bash
+curl "https://app.askgrapple.com/api/v1/workspaces/acme-corp/projects/42/views/117/data?page=1&per_page=100" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+## Response
+
+<ResponseField name="data" type="array">
+  Paginated grouped rows. Each row is an array of cell objects.
+
+  <Expandable title="cell object">
+    <ResponseField name="key" type="string">
+      View column key, in the form `gf_{id}`.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Human-readable column name.
+    </ResponseField>
+
+    <ResponseField name="value" type="mixed">
+      Cell value.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="meta" type="object">
+  Pagination metadata.
+
+  <Expandable title="properties">
+    <ResponseField name="record_count" type="integer">
+      Total grouped rows in the view.
+    </ResponseField>
+
+    <ResponseField name="page" type="integer">
+      Current page number.
+    </ResponseField>
+
+    <ResponseField name="per_page" type="integer">
+      Rows returned per page.
+    </ResponseField>
+
+    <ResponseField name="has_more" type="boolean">
+      Whether additional pages are available.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+```json
+{
+  "data": [
+    [
+      {
+        "key": "gf_180",
+        "name": "Last name",
+        "value": "Nguyen"
+      },
+      {
+        "key": "gf_181",
+        "name": "count(Company)",
+        "value": 10
+      }
+    ]
+  ],
+  "meta": {
+    "record_count": 546,
+    "page": 1,
+    "per_page": 100,
+    "has_more": true
+  }
+}
+```
+
+<Tip>
+  Paginate through all rows by incrementing `page` until `meta.has_more` is `false`.
+</Tip>
+
+## Errors
+
+| Status | Reason |
+| --- | --- |
+| `401` | Missing or invalid API key |
+| `403` | API key does not belong to this workspace |
+| `404` | Project or view not found in this workspace |
+| `422` | `page` or `per_page` is invalid |
