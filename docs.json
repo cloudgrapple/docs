@@ -14,8 +14,7 @@
         "group": "Getting Started",
         "pages": [
           "index",
-          "quickstart",
-          "sign-in/microsoft-admin-consent"
+          "quickstart"
         ]
       },
       {
@@ -127,6 +126,12 @@
               "api/projects/views/data"
             ]
           }
+        ]
+      },
+      {
+        "group": "Admin",
+        "pages": [
+          "sign-in/microsoft-admin-consent"
         ]
       }
     ],
