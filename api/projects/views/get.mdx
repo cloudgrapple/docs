@@ -1,0 +1,70 @@
+---
+title: "Get view"
+sidebarTitle: "GET /projects/{project}/views/{view}"
+description: "Get one view on a project"
+---
+
+Returns the name and parent of a single view.
+
+The view must belong to the project. A chart grouping, or a view from another project, is not found.
+
+## Request
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token for a workspace API key scoped to this workspace.
+</ParamField>
+
+<ParamField path="workspace" type="string" required>
+  Workspace slug.
+</ParamField>
+
+<ParamField path="project" type="integer" required>
+  Project ID.
+</ParamField>
+
+<ParamField path="view" type="integer" required>
+  View ID from [List views](/api/projects/views/list).
+</ParamField>
+
+```bash
+curl "https://app.askgrapple.com/api/v1/workspaces/acme-corp/projects/42/views/117" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+## Response
+
+<ResponseField name="data" type="object">
+  View details.
+
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      View ID.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      View name.
+    </ResponseField>
+
+    <ResponseField name="parent_id" type="integer | null">
+      ID of the parent view when this view is nested. `null` for a top-level view.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+```json
+{
+  "data": {
+    "id": 117,
+    "name": "Last name",
+    "parent_id": null
+  }
+}
+```
+
+## Errors
+
+| Status | Reason |
+| --- | --- |
+| `401` | Missing or invalid API key |
+| `403` | API key does not belong to this workspace |
+| `404` | Project or view not found in this workspace |
