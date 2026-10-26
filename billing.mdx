@@ -1,0 +1,80 @@
+---
+title: "Billing"
+sidebarTitle: "Billing"
+description: "How Grapple counts records processed and turns them into credits"
+keywords:
+  - "billing"
+  - "credits"
+  - "records"
+  - "pricing"
+  - "overage"
+  - "plans"
+---
+
+Grapple bills on **records processed**. One credit is 1 million records.
+
+Each month, divide records processed by 1,000,000 and round to the nearest credit. A half credit rounds up, so 1.5 million records is 2 credits. The year's total adds those credits. Leftover records do not carry into the next month.
+
+Records processed are source records plus project records.
+
+## Sources
+
+Source records are the unique records stored at the end of the month, added across your collections. Syncing the same record again does not count it again. A record removed before month end is not counted. A contact and a deal are both records.
+
+## Projects
+
+Each project counts at most once per day, even if it materializes more than once that day. Add those daily record counts across the month. A day with no materialization adds nothing.
+
+Automations are a separate plan limit, not part of this count. Allowances for every plan are on [Plans](https://estimate.askgrapple.com/plans).
+
+## What does not count
+
+- **Syncing more often.** A record synced ten times in a month is still one source record.
+- **Updating a project many times in a day.** That project still counts once that day.
+- **Filtering a project.** `/filter`, a grid filter, and a chart filter run after materialization. They do not add records, and they do not shrink that day's count.
+- **Adding charts.** A chart reads the materialized project. It does not process records of its own.
+- **Asking an AI chatbot,** including Claude.
+
+## What counts
+
+- **More data in a source.** Adding 1,000 records in Salesforce adds 1,000 source records at month end.
+- **A new project.** Its materialized records are added once per day, on top of the source records. The source rows are not counted a second time just because a project uses them.
+
+## Use fewer records
+
+<Tip>
+  Open a column menu and choose **Filter**. That field filter runs before materialization and drops rows, so fewer records are processed. `/filter` on the project does not change the count.
+</Tip>
+
+<Tip>
+  On a source, **Start date** defaults to all historical data. Set a later start date to skip that backfill. Older records never sync, so they never count.
+</Tip>
+
+## How you pay
+
+Included credits are **prepaid**. The plan fee pays for the year's credits up front.
+
+On an annual plan, those credits are one pool for the year. Monthly credits roll over inside the year, and you can use them in any month of that term. A quiet month keeps its credit. A heavy month can spend credits from other months in the same year.
+
+**Overages are charged monthly in arrears**, and only after the year's credits are used up. Once the running total passes the included credits, each extra credit is invoiced that month at the plan's price per credit. A later quiet month does not reverse that invoice.
+
+Prices and included credits for every plan are on [Plans](https://estimate.askgrapple.com/plans).
+
+## Starter
+
+Starter is $6,000 per year ($500 per month) and includes 12 credits. Each credit past those 12 is $500.
+
+A normal month:
+
+| Line | Records |
+| --- | --- |
+| Sources at month end | 500,000 |
+| Projects, 16,600 records each day for 30 days | 498,000 |
+| **Total** | **998,000** |
+| **Credits** | **1** |
+
+That month draws 1 of the prepaid 12. There is no overage. The 30-day project line matches the illustration on the plans page. Your month sums the days it actually has.
+
+A heavier month of 1.6 million records rounds to 2 credits. That spends 2 of the 12. There is still no overage.
+
+The first month whose credits push the year past 12 is invoiced in arrears for the credits past 12, at $500 each.
