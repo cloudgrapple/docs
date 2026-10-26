@@ -131,7 +131,8 @@
       {
         "group": "Admin",
         "pages": [
-          "sign-in/microsoft-admin-consent"
+          "sign-in/microsoft-admin-consent",
+          "billing"
         ]
       }
     ],
